@@ -55,7 +55,7 @@ jobs:
       - print_pipeline_id
 workflows:
   # Name the workflow "welcome"
-  #welcome:
+  welcome:
     # Run the welcome/run job in its own container
     jobs:
       - print_id
