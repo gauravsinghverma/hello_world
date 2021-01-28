@@ -29,28 +29,27 @@ jobs:
     steps:
       - run:
           name: output to file
-          command: echo "text to output here" > output.txt
+          command: echo "hello world" > ~/output.txt
       - persist_to_workspace:
-          root: /tmp/dir
+          root: ~/
           paths:
-            - foo/bar/output.txt
-            - baz
+            - output.txt
   print_output_file:
     docker:
       - image: circleci/node:13.8.0
     steps:
       - attach_workspace:
-              at: /tmp/dir
+          at: ~/
       - run: 
           name: print from file
-          command: cat output.txt
+          command: cat ~/output.txt
           
 workflows:
   # Name the workflow "welcome"
   welcome:
     # Run the welcome/run job in its own container
     jobs:
-      - welcome/run
+      #- welcome/run
       - save_hello_world_output
       - print_output_file:
           requires:
