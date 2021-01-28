@@ -1,7 +1,7 @@
 # Use the latest 2.1 version of CircleCI pipeline process engine. See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 # Use a package of configuration called an orb.
-commands:
+commands_q:
   print_pipeline_id:
     description: "Print pipeline Id"
     steps:
@@ -52,10 +52,10 @@ jobs:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - commands
+      - commands_q
 workflows:
   # Name the workflow "welcome"
-  welcome:
+  #welcome:
     # Run the welcome/run job in its own container
     jobs:
       - print_id
