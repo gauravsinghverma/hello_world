@@ -3,7 +3,7 @@ version: 2.1
 # Use a package of configuration called an orb.
 defaults: &defaults
   docker:
-      - image: circleci/node:13.8.0
+    - image: circleci/node:13.8.0
 commands:
   print_pipeline_id:
     description: "Print pipeline Id"
@@ -52,7 +52,8 @@ jobs:
           name: print from file
           command: cat ~/output.txt
   print_id:
-    <<: *defaults
+    docker:
+      - image: circleci/node:13.8.0
     steps:
       - commands
 workflows:
