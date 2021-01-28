@@ -31,7 +31,7 @@ jobs:
           name: output to file
           command: echo "text to output here" > output.txt
       - persist_to_workspace:
-          root: /tmp/workspace
+          root: /tmp/dir
           paths:
             - foo/bar/output.txt
             - baz
@@ -40,7 +40,7 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - attach_workspace:
-              at: /tmp/workspace
+              at: /tmp/dir
       - run: 
           name: print from file
           command: cat output.txt
