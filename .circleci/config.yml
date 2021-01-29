@@ -55,12 +55,24 @@ jobs:
     <<: *defaults
     steps:
       - print_pipeline_id
+  
+  fail_job:
+    <<: *defaults
+    steps:
+      - run:
+          name: fail this job
+          command: return 1
+      - run:
+          name: print job fail
+          command: echo "job failed"
+          when: on_fail
 workflows:
   # Name the workflow "welcome"
   welcome:
     # Run the welcome/run job in its own container
     jobs:
-      - print_id
+      - fail_job
+      #- print_id
       #- welcome/run
       #- save_hello_world_output
       #- print_output_file:
